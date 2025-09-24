@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Meu Currículo</title>
+  <meta name="description" content="Mini-site sobre Guilherme — Home / Sobre / Currículo & Experiências / Contato" />
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --accent:#06b6d4; --muted:#94a3b8; --glass: rgba(255,255,255,0.03);
+      --radius:14px; --maxw:1000px;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#031024 0%, #071428 60%);color:#e6eef6;min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:36px 12px}
+    .site{width:100%;max-width:var(--maxw)}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700}
+    nav ul{list-style:none;margin:0;padding:0;display:flex;gap:12px}
+    nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px}
+    nav a.active, nav a:hover{background:var(--glass);color:var(--accent)}
+    main{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-radius:var(--radius);padding:22px;box-shadow:0 6px 30px rgba(2,6,23,0.6)}
+    .card{background:rgba(255,255,255,0.02);padding:16px;border-radius:12px;margin-bottom:12px}
+    h1,h2{margin:0 0 10px 0}
+    p{color:var(--muted);line-height:1.45}
+    .chip{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:999px;color:var(--muted);font-size:13px;margin:4px}
+    footer{margin-top:14px;color:var(--muted);font-size:13px;text-align:center}
+    .accordion{border:1px solid rgba(255,255,255,0.05);border-radius:8px;margin-bottom:8px;overflow:hidden}
+    .accordion-header{padding:12px;cursor:pointer;background:rgba(255,255,255,0.03)}
+    .accordion-content{display:none;padding:12px}
+    .accordion.active .accordion-content{display:block}
+  </style>
+</head>
+<body>
+  <div class="site" id="app">
+    <header>
+      <div class="brand">
+        <div class="logo">GP</div>
+        <div>
+          <div style="font-weight:700">Guilherme Paicheco Ferreira</div>
+          <div style="font-size:13px;color:var(--muted)">Ciência da Computação — IFMG Ibirité</div>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#/" data-link>Home</a></li>
+          <li><a href="#/sobre" data-link>Sobre</a></li>
+          <li><a href="#/curriculo" data-link>Currículo</a></li>
+          <li><a href="#/contato" data-link>Contato</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div id="view"></div>
+      <footer>Bom dia prof, lembrando que por enquanto tá desatualizado, com mais tempo eu melhoro ele!</footer>
+    </main>
+  </div>
+
+  <template id="tpl-home">
+    <section>
+      <h1>Bem-vindo!</h1>
+      <p>Este site apresenta um pouco sobre mim, minha formação, certificações e experiências. Explore os menus para saber mais.</p>
+      <div class="card">
+        <h2>Destaques</h2>
+        <p>• Estudante de Ciência da Computação (IFMG Ibirité)<br>
+        • Técnico em Mecatrônica (IFMG)<br>
+        • Aprovado em concursos públicos (Defensoria MG e Prefeitura de Betim)<br>
+        • Certificações em Python, Web, CLP, Design, Games</p>
+      </div>
+    </section>
+  </template>
+
+  <template id="tpl-sobre">
+    <section>
+      <h1>Sobre mim</h1>
+      <div class="card">
+        <p>Sou <strong>Guilherme Paicheco Ferreira</strong>, estudante de Ciência da Computação no IFMG Campus Ibirité, aprovado pelo SISU 2024 no curso com a maior nota de corte entre todos os IFMGs. Atualmente, sou representante da turma e formado como técnico em Mecatrônica pelo mesmo instituto, onde também atuei como representante de classe.</p>
+        <p>Possuo certificações em Python (básico e avançado), Programação Web, Operação e Programação de CLP pelo IFMG, além de cursos em Web Design, Design Gráfico, Criação de Games e Manutenção de Celulares pela METTAX.</p>
+        <p>Fui aprovado em dois concursos públicos: Técnico da Defensoria Pública do Estado de Minas Gerais (2023) e Oficial de Apoio à Saúde I pela Prefeitura de Betim (2024).</p>
+      </div>
+      <div class="card">
+        <h2>Prêmios e títulos</h2>
+        <p>• Destaque Acadêmico — IFMG (2025)<br>• Menção Honrosa OBMEP (2023)</p>
+      </div>
+    </section>
+  </template>
+
+  <template id="tpl-curriculo">
+    <section>
+      <h1>Currículo</h1>
+      <div class="accordion">
+        <div class="accordion-header">Formação acadêmica</div>
+        <div class="accordion-content">
+          <p>• Graduação em Ciência da Computação — IFMG (2025 - atual)<br>
+          • Ensino Profissional Técnico em Mecatrônica — IFMG (2022 - 2025)<br>
+          • Ensino Médio — Escola Estadual Antônio Pinheiro Diniz (2021 - 2024)<br>
+          • Ensino Fundamental II — Escola Estadual Professora Carmelita Carvalho Garcia (2019 - 2021)<br>
+          • Ensino Fundamental I — Escola Estadual Professora Carmelita Carvalho Garcia (até 2019)</p>
+        </div>
+      </div>
+      <div class="accordion">
+        <div class="accordion-header">Formação complementar</div>
+        <div class="accordion-content">
+          <p>• Python Básico e Avançado (IFMG)<br>
+          • Programação Web Básico (IFMG)<br>
+          • JavaScript Básico (IFMG)<br>
+          • Operador e Programador de CLP (IFMG)<br>
+          • Designer Gráfico, WebDesigner, Manutenção de Celulares, Criação de Games (METTAX)<br>
+          • Ação Formativa para Profissionais Administrativos (PMB)<br>
+          • Fotografias com Dispositivos Móveis (Fundação Bradesco)</p>
+        </div>
+      </div>
+      <div class="accordion">
+        <div class="accordion-header">Experiências e projetos</div>
+        <div class="accordion-content">
+          <p>• Servidor Público — Prefeitura de Betim (Oficial de Apoio à Saúde, 2025 - atual)<br>
+          • Fundador e Líder de um Grêmio Estudantil (2024)<br>
+          • Projeto de extensão Desafio Jinkoni — competição de inovação IFMG e intercâmbio Brasil-México (2025)<br>
+          • Artigo científico: Inteligência Artificial — Fundamentos, Aplicações e Implicações (2025)</p>
+        </div>
+      </div>
+    </section>
+  </template>
+
+  <template id="tpl-contato">
+    <section>
+      <h1>Contato</h1>
+      <div class="card">
+        <p>Email: <strong>gu1lh3rm3.ifmg@gmail.com</strong><br>
+        Telefone: <strong>(31) 99251-8002</strong><br>
+        Instagram: <strong>@u92_.gu1._au79</strong></p>
+      </div>
+    </section>
+  </template>
+
+  <script>
+    const routes = {
+      '/': document.getElementById('tpl-home').content,
+      '/sobre': document.getElementById('tpl-sobre').content,
+      '/curriculo': document.getElementById('tpl-curriculo').content,
+      '/contato': document.getElementById('tpl-contato').content
+    };
+
+    function render(){
+      const path = location.hash.replace('#','') || '/';
+      const tpl = routes[path] || routes['/'];
+      const view = document.getElementById('view');
+      view.innerHTML = '';
+      view.appendChild(tpl.cloneNode(true));
+      document.querySelectorAll('nav a').forEach(a=> a.classList.toggle('active', a.getAttribute('href') === '#'+path));
+      bindAccordion();
+    }
+
+    function bindAccordion(){
+      document.querySelectorAll('.accordion-header').forEach(h=>{
+        h.onclick = ()=> h.parentElement.classList.toggle('active');
+      });
+    }
+
+    window.addEventListener('hashchange', render);
+    window.addEventListener('load', render);
+  </script>
+</body>
+</html>
